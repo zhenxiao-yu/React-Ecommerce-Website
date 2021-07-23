@@ -16,7 +16,7 @@ class Login extends React.Component {
             </div>
           </div>
 
-        {/*password label*/}
+          React-Ecommerce-Website{/*password label*/}
           <div className="field">
             <label className="label">Password</label>
             <div className="control">

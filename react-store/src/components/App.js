@@ -8,7 +8,7 @@ class App extends React.Component {
       <div className="main">
 
         
-        <Header />
+        <Header nickname="Admin" age={28} marry={true}/>
         <Products />
       </div>
     );

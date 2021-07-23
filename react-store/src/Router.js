@@ -14,7 +14,7 @@ const Router = () => (
       {/*path to main page*/}
       <Route path="/" exact component={App} />
       {/*path to login page*/}
-      <Route path="/login/:nickname" component={Login} />
+      <Route path="/login" component={Login} />
       {/*direct undefined pages to not found page*/}
       <Route component={NotFound} />
     </Switch>

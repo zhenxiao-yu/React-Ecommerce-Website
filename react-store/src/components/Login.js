@@ -4,29 +4,32 @@ import React from "react";
 class Login extends React.Component {
   render() {
     return (
-      <form className="login-wrapper">
-        <div>
-          {/*email label*/}
-          <label>Email</label> 
-          {/*email input field*/}
-          <div>
-            <input type="text" placeholder="Email" />
+      <div className="login-wrapper">
+          {/*login form container*/}
+        <form className="box login-box">
+        
+        {/*email label*/}
+          <div className="field">
+            <label className="label">Email</label>
+            <div className="control">
+              <input className="input" type="text" placeholder="Email" />
+            </div>
           </div>
-        </div>
 
-        <div>
-          {/*password label*/}
-          <label>Password</label> 
-          {/*password input field*/}
-          <div>
-            <input type="text" placeholder="Password" />
+        {/*password label*/}
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control">
+              <input className="input" type="password" placeholder="Password" />
+            </div>
           </div>
-        </div>
-        {/*Sumbit button*/}
-        <div>
-            <button>Submit</button>
-        </div>
-      </form>
+
+        {/*submit button*/}
+          <div className="control">
+            <button className="button is-fullwidth is-primary">Submit</button>
+          </div>
+        </form>
+      </div>
     ); //JSX Babel emmet
   }
 }

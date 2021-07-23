@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import '../css/app.scss';
 
 //login component
 class Login extends React.Component {

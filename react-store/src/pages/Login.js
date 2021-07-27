@@ -2,7 +2,6 @@
 import React from 'react';
 
 class Login extends React.Component {
-
    // References
    emailRef = React.createRef();
    passwordRef = React.createRef();
@@ -30,13 +29,13 @@ class Login extends React.Component {
           <div className="field">
             <label className="label">Email</label>
             <div className="control">
-              <input className="input" type="text" placeholder="Email" />
+              <input className="input" type="text" placeholder="Email" ref={this.emailRef}/>
             </div>
           </div>
           <div className="field">
             <label className="label">Password</label>
             <div className="control">
-              <input className="input" type="password" placeholder="Password" />
+              <input className="input" type="password" placeholder="Password" ref={this.passwordRef}/>
             </div>
           </div>
           <div className="control">

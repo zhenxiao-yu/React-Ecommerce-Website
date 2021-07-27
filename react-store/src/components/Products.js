@@ -1,11 +1,20 @@
-import React from 'react';
+import React from "react";
+import ToolBar from 'components/ToolBar';
+import Product from 'components/Product';
 
 class Products extends React.Component {
   render() {
     return (
-      <div className="products">
-          {/*Body made of products*/}
-        <p>Products Component</p>
+      <div>
+        <ToolBar />
+        <div className="products">
+          {/*Body consisting of products*/}
+            <Product />
+            <Product />
+            <Product />
+            <Product />
+            <Product />
+        </div>
       </div>
     );
   }

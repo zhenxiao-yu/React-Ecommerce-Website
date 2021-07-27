@@ -13,11 +13,8 @@ class Login extends React.Component {
     event.preventDefault();
 
     // 2. retrive form data
-    const formData = {
-      email: this.emailRef.current.value,
-      password: this.passwordRef.current.value,
-    };
-    console.log(formData);
+    console.log(this.state);
+
     // 3. execute login functions
 
     // 4. reroute to index page
@@ -25,11 +22,10 @@ class Login extends React.Component {
   };
 
   handleChange = e => {
-    console.log(e.target.value);
     this.setState({
-      email: e.target.value.toUpperCase(),
-    })
-  }
+      [e.target.name]: e.target.value
+    });
+  };
 
   render() {
     return (
@@ -57,6 +53,8 @@ class Login extends React.Component {
                 type="password"
                 placeholder="Password"
                 name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
               />
             </div>
           </div>

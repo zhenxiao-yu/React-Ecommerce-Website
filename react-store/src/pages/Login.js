@@ -3,15 +3,23 @@ import React from 'react';
 
 class Login extends React.Component {
 
+   // References
+   emailRef = React.createRef();
+   passwordRef = React.createRef();
+
   handleSubmit = event => {
-    // 1. 阻止默认事件行为
+    // 1. prevent default event (resubmit disabled)
     event.preventDefault();
 
-    // 2. 获取表单数据
+    // 2. retrive form data
+    const formData = {
+      email: this.emailRef.current.value,
+      password: this.passwordRef.current.value
+    };
+    console.log(formData);
+    // 3. execute login functions
 
-    // 3. 处理登录逻辑
-
-    // 4. 跳转到首页视图
+    // 4. reroute to index page
     this.props.history.push('/');
   };
 

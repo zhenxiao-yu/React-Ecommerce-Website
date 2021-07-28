@@ -1,40 +1,40 @@
-import React from 'react';
-import axios from 'commons/axios';
-import {CSSTransition, TransitionGroup} from 'react-transition-group'
-import ToolBar from 'components/ToolBar';
-import Product from 'components/Product';
+import React from "react";
+import axios from "commons/axios";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import ToolBar from "components/ToolBar";
+import Product from "components/Product";
 
 class Products extends React.Component {
   state = {
     products: [],
-    sourceProducts: []
+    sourceProducts: [],
   };
 
   componentDidMount() {
-    axios.get('/products').then(response => {
+    axios.get("/products").then((response) => {
       this.setState({
         products: response.data,
-        sourceProducts: response.data
+        sourceProducts: response.data,
       });
     });
   }
 
   // search
-  search = text => {
+  search = (text) => {
     // 1. retrieved new array
     let _products = [...this.state.sourceProducts];
 
     // 2.filter the retrieved array
-    _products = _products.filter(p => {
+    _products = _products.filter((p) => {
       // name: Abcd text: ab   ===> ['Ab']
       // text: '' ==> ["", "", "", "", ""]
-      const matchArray = p.name.match(new RegExp(text, 'gi'));
+      const matchArray = p.name.match(new RegExp(text, "gi"));
       return !!matchArray;
     });
 
     // 3. set State
     this.setState({
-      products: _products
+      products: _products,
     });
   };
 
@@ -44,13 +44,23 @@ class Products extends React.Component {
         <ToolBar search={this.search} />
         <div className="products">
           <div className="columns is-multiline is-desktop">
-            {this.state.products.map(p => {
-              return (
-                <div className="column is-3" key={p.id}>
-                  <Product product={p} />
-                </div>
-              );
-            })}
+            {/*define transition area*/}
+            <TransitionGroup component={null}>
+              {this.state.products.map((p) => {
+                return (
+                  //css transtition settings
+                  <CSSTransition
+                    classNames="product-fade"
+                    timeout={400}
+                    key={p.id}
+                  >
+                    <div className="column is-3" key={p.id}>
+                      <Product product={p} />
+                    </div>
+                  </CSSTransition>
+                );
+              })}
+            </TransitionGroup>
           </div>
         </div>
       </div>

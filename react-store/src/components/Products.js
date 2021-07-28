@@ -3,6 +3,7 @@ import axios from "commons/axios";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import ToolBar from "components/ToolBar";
 import Product from "components/Product";
+import Panel from "components/Panel";
 
 class Products extends React.Component {
   state = {
@@ -11,6 +12,7 @@ class Products extends React.Component {
   };
 
   componentDidMount() {
+    //get product information from JSON Server
     axios.get("/products").then((response) => {
       this.setState({
         products: response.data,
@@ -38,6 +40,11 @@ class Products extends React.Component {
     });
   };
 
+  //open panel
+  toAdd = () => {
+    Panel.open();
+  };
+
   render() {
     return (
       <div>
@@ -51,7 +58,7 @@ class Products extends React.Component {
                   //css transtition settings
                   <CSSTransition
                     classNames="product-fade"
-                    timeout={400}
+                    timeout={300}
                     key={p.id}
                   >
                     <div className="column is-3" key={p.id}>
@@ -62,6 +69,9 @@ class Products extends React.Component {
               })}
             </TransitionGroup>
           </div>
+          <button className="button is-primary add-btn" onClick={this.toAdd}>
+            +
+          </button>
         </div>
       </div>
     );

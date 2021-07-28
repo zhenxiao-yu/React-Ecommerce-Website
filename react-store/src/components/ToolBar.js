@@ -1,6 +1,8 @@
 import React from "react";
 
 class ToolBar extends React.Component {
+
+  state 
   render() {
     return (
       <div className="tool-box">

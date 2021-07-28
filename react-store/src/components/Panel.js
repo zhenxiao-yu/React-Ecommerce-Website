@@ -1,3 +1,12 @@
+/**
+ * Panel Components requirements:
+ 1. Render only once, multi-page usesability
+ 2. Functions as a container for child components
+    (1) child components can pass data
+    (2) child components can close parent components
+    (3) child components can communicate with other components 
+ */
+
 import React from "react";
 import { render } from "react-dom";
 
@@ -5,20 +14,29 @@ class Panel extends React.Component {
   state = {
     //close on default
     active: false,
+    component: null,
+    callback: () => {},
   };
 
-  open = () => {
+  open = (options) => {
+    const { component, callback } = options;
+    const _key = new Date().getTime();
+    const _component = React.createElement(component, {
+      close: this.close,
+      key: _key,
+    });
     this.setState({
-      //activate panel
       active: true,
+      component: _component,
+      callback: callback,
     });
   };
 
-  close = () => {
+  close = (data) => {
     this.setState({
-      //deactive panel
       active: false,
     });
+    this.state.callback(data);
   };
 
   render() {
@@ -33,11 +51,11 @@ class Panel extends React.Component {
         <div className="over-layer" onClick={this.close}></div>
         <div className="panel">
           <div className="head">
-            {/*close panel when "X" is clicked*/}
+            {/*close panel when "x" is clicked*/}
             <span className="close" onClick={this.close}>
               ×
             </span>
-            <p className="has-text-centered">Children Component</p>
+            {this.state.component}
           </div>
         </div>
       </div>

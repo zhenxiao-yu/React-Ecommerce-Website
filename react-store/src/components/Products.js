@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'commons/axios';
+import {CSSTransition, TransitionGroup} from 'react-transition-group'
 import ToolBar from 'components/ToolBar';
 import Product from 'components/Product';
 

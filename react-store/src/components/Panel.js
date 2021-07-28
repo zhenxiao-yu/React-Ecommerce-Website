@@ -4,7 +4,7 @@
  2. Functions as a container for child components
     (1) child components can pass data
     (2) child components can close parent components
-    (3) child components can communicate with other components 
+    (3) child components can communicate with Products components 
  */
 
 import React from "react";
@@ -48,11 +48,21 @@ class Panel extends React.Component {
     return (
       <div className={_class[this.state.active]}>
         {/*close panel when the overlay is clicked*/}
-        <div className="over-layer" onClick={this.close}></div>
+        <div
+          className="over-layer"
+          onClick={() => {
+            this.close();
+          }}
+        ></div>
         <div className="panel">
           <div className="head">
             {/*close panel when "x" is clicked*/}
-            <span className="close" onClick={this.close}>
+            <span
+              className="close"
+              onClick={() => {
+                this.close();
+              }}
+            >
               ×
             </span>
             {this.state.component}

@@ -50,6 +50,7 @@ class Product extends React.Component {
       }
       //show notification message
       toast.success('Add Cart Success');
+      this.props.updateCartNum();
     } catch (error) {
       toast.error('Add Cart Failed');
     }

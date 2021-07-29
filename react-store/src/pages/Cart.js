@@ -7,13 +7,15 @@ import { formatPrice } from 'commons/helper';
 
 
 const Cart = () => {
+  //use hook to define state status
   const [carts, setCarts] = useState([]);
 
+  
   useEffect(() => {
     axios.get('/carts').then(res => setCarts(res.data));
   });
 
-  
+  //total cost of the entire shopping cart
   const totalPrice = () => {
     const totalPrice = carts
       .map(cart => cart.mount * parseInt(cart.price))
@@ -26,6 +28,7 @@ const Cart = () => {
       <div className="cart-page">
         <span className="cart-title">Shopping Cart</span>
         <div className="cart-list">
+          {/*render call cart items*/}
           {carts.map(cart => (
             <CartItem key={cart.id} cart={cart} />
           ))}

@@ -1,6 +1,7 @@
-import React from "react";
 
-const Header = (props) => (
+import React from 'react';
+
+const Header = props => (
   <div className="header">
     <div className="grid">
       <div className="start">
@@ -13,6 +14,7 @@ const Header = (props) => (
             {props.nickname}
           </span>
         ) : (
+          // <React.Fragment></React.Fragment> can use <></>
           <React.Fragment>
             <a href="/">Login</a>
             <a href="/">Register</a>

@@ -29,6 +29,11 @@ class Product extends React.Component {
       const { id, name, image, price } = this.props.product;
       const res = await axios.get(`/carts?productId=${id}`);
       const carts = res.data;
+      
+      /*check if an item with the same id is already in cart,
+        if true, increase number of that item by 1
+        else, add new item 
+      */
       if (carts && carts.length > 0) {
         const cart = carts[0];
         cart.mount += 1;
@@ -43,6 +48,7 @@ class Product extends React.Component {
         };
         await axios.post('/carts', cart);
       }
+      //show notification message
       toast.success('Add Cart Success');
     } catch (error) {
       toast.error('Add Cart Failed');

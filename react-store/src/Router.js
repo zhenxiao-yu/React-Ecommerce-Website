@@ -8,6 +8,8 @@ import Login from 'pages/Login';
 //not found page
 import NotFound from 'pages/NotFound';
 
+import Cart from 'pages/Cart';
+
 const Router = () => (
   <BrowserRouter>
     <Switch>
@@ -16,6 +18,8 @@ const Router = () => (
       {/*path to login page*/}
       <Route path="/login" component={Login} />
       {/*direct undefined pages to not found page*/}
+
+      <Route path="/cart" component={Cart} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>

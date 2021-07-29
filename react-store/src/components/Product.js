@@ -6,11 +6,12 @@ import EditInventory from 'components/EditInventory';
 class Product extends React.Component {
 
   //edit inventory method 
-   toEdit = () => {
+  toEdit = () => {
     Panel.open({
       component: EditInventory,
       props: {
-        product: this.props.product
+        product: this.props.product,
+        deleteProduct: this.props.delete
       },
       callback: data => {
         if (data) {

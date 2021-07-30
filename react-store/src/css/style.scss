@@ -155,7 +155,7 @@ body {
 }
 .product-fade-enter-active {
   opacity: 1;
-  transition: all 0.4s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 .product-fade-exit {
@@ -163,7 +163,7 @@ body {
 }
 .product-fade-exit-active {
   opacity: 0.1;
-  transition: all 0.4s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 // -------- product component -------

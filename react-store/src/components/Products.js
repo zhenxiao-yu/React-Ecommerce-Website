@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'commons/axios';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import ToolBar from 'components/ToolBar';
+import ToolBox from 'components/ToolBox';
 import Product from 'components/Product';
 import Panel from 'components/Panel';
 import AddInventory from 'components/AddInventory';
@@ -78,9 +78,7 @@ class Products extends React.Component {
     });
   };
 
-
   delete = id => {
-    //filter out id
     const _products = this.state.products.filter(p => p.id !== id);
     const _sProducts = this.state.sourceProducts.filter(p => p.id !== id);
     this.setState({
@@ -90,7 +88,6 @@ class Products extends React.Component {
   };
 
   updateCartNum = async () => {
-    //get (from rest API) and set total number of cart items
     const cartNum = await this.initCartNum();
     this.setState({
       cartNum: cartNum
@@ -98,21 +95,23 @@ class Products extends React.Component {
   };
 
   initCartNum = async () => {
-    //connect torest API
-    const res = await axios.get('/carts');
+    const user = global.auth.getUser() || {};
+    const res = await axios.get('/carts', {
+      params: {
+        userId: user.email
+      }
+    });
     const carts = res.data || [];
-    //sum of all the 'mount' fields
     const cartNum = carts
       .map(cart => cart.mount) // [2, 1,2 ]
       .reduce((a, value) => a + value, 0);
     return cartNum;
   };
 
-
   render() {
     return (
       <div>
-        <ToolBar search={this.search} cartNum={this.state.cartNum}/>
+        <ToolBox search={this.search} cartNum={this.state.cartNum} />
         <div className="products">
           <div className="columns is-multiline is-desktop">
             <TransitionGroup component={null}>
@@ -136,9 +135,11 @@ class Products extends React.Component {
               })}
             </TransitionGroup>
           </div>
-          <button className="button is-primary add-btn" onClick={this.toAdd}>
-            add
-          </button>
+          {(global.auth.getUser() || {}).type === 1 && (
+            <button className="button is-primary add-btn" onClick={this.toAdd}>
+              add
+            </button>
+          )}
         </div>
       </div>
     );

@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nickname": "admin",
+      "email": "admin@uwo.com",
+      "password": "615615",
+      "type": 1
+    },
+    {
+      "id": 2,
+      "email": "user@uwo.com",
+      "password": "111111",
+      "nickname": "Curry",
+      "type": 0
+    }
+  ]
+}

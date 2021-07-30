@@ -40,20 +40,18 @@ class AddInventory extends React.Component {
         {/* header */}
         <p className="title has-text-centered">Inventory</p>
         <form onSubmit={this.submit}>
-
           <div className="field">
             <div className="control">
               {/* Item Name */}
               <label className="label has-text-left">Item Name</label>
               <textarea
-                className="textarea"
+                className="textarea" //text box
                 name="name"
                 value={this.state.name}
                 onChange={this.handleChange}
               />
             </div>
           </div>
-
 
           <div className="field">
             <div className="control">
@@ -114,9 +112,11 @@ class AddInventory extends React.Component {
           </div>
           <br />
           <div className="field is-grouped is-grouped-centered">
+            {/* Sumbit Button */}
             <div className="control">
               <button className="button is-link">Submit</button>
             </div>
+            {/* Close Button */}
             <div className="control">
               <button
                 className="button"

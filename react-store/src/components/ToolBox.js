@@ -1,14 +1,12 @@
-import React from "react";
+import React from 'react';
 import { withRouter } from 'react-router-dom';
-class ToolBar extends React.Component {
-
+import { toast } from 'react-toastify';
+class ToolBox extends React.Component {
   state = {
-    //declare a controlled input
-    searchText: '',
+    searchText: ''
   };
 
   handleChange = e => {
-    //update seatchText input state
     const value = e.target.value;
     this.setState({
       searchText: value
@@ -17,7 +15,6 @@ class ToolBar extends React.Component {
   };
 
   clearSearchText = () => {
-    //set seatchText input state to empty 
     this.setState({
       searchText: ''
     });
@@ -25,15 +22,18 @@ class ToolBar extends React.Component {
   };
 
   goCart = () => {
+    if (!global.auth.isLogin()) {
+      this.props.history.push('/login');
+      toast.info('Please Login First');
+      return;
+    }
     this.props.history.push('/cart');
   };
 
   render() {
     return (
       <div className="tool-box">
-        {/*Logo*/}
         <div className="logo-text">Store</div>
-        {/*Search Box*/}
         <div className="search-box">
           <div className="field has-addons">
             <div className="control">
@@ -61,4 +61,4 @@ class ToolBar extends React.Component {
   }
 }
 
-export default withRouter(ToolBar);
+export default withRouter(ToolBox);

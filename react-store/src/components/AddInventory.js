@@ -2,9 +2,9 @@ import React from "react";
 import { toast } from "react-toastify";
 import axios from "commons/axios";
 
-// Add Inventory components
+// Add Inventory component
 class AddInventory extends React.Component {
-  //define new item status fields
+  //define inventory item status fields
   state = {
     name: "",
     price: "",
@@ -29,7 +29,8 @@ class AddInventory extends React.Component {
     const product = { ...this.state };
     axios.post("products", product).then((res) => {
       this.props.close(res.data);
-      toast.success("Add Success");
+      //send add 
+      toast.success("New Item Added");
     });
   };
 

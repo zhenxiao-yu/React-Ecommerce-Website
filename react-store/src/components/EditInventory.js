@@ -2,7 +2,9 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import axios from 'commons/axios';
 
+// Edit Inventory components
 class EditInventory extends React.Component {
+  //define inventory item status fields
   state = {
     id: '',
     name: '',
@@ -12,7 +14,9 @@ class EditInventory extends React.Component {
     status: 'available'
   };
 
+
   componentDidMount() {
+    //fields
     const { id, name, image, tags, price, status } = this.props.product;
     this.setState({
       id,
@@ -24,23 +28,28 @@ class EditInventory extends React.Component {
     });
   }
 
+  //retrieve target item value and name
   handleChange = e => {
     const value = e.target.value;
     const name = e.target.name;
+    //set name and value
     this.setState({
       [name]: value
     });
   };
 
+   //handles the newly edited item
   submit = e => {
     e.preventDefault();
     const product = { ...this.state };
     axios.put(`products/${this.state.id}`, product).then(res => {
+      //close panel
       this.props.close(res.data);
-      toast.success('Edit Success');
+      toast.success('Item Information Edited');
     });
   };
 
+  //Remove item from product list
   onDelete = () => {
     axios.delete(`products/${this.state.id}`).then(res => {
       this.props.deleteProduct(this.state.id);
@@ -49,6 +58,7 @@ class EditInventory extends React.Component {
     });
   };
 
+  //JFX
   render() {
     return (
       <div className="inventory">
@@ -56,7 +66,7 @@ class EditInventory extends React.Component {
         <form onSubmit={this.submit}>
           <div className="field">
             <div className="control">
-              <label className="label">Name</label>
+              <label className="label has-text-centered">Item Name</label>
               <textarea
                 className="textarea"
                 name="name"
@@ -67,7 +77,7 @@ class EditInventory extends React.Component {
           </div>
           <div className="field">
             <div className="control">
-              <label className="label">Price</label>
+              <label className="label has-text-left">Price</label>
               <input
                 type="number"
                 className="input"
@@ -79,7 +89,7 @@ class EditInventory extends React.Component {
           </div>
           <div className="field">
             <div className="control">
-              <label className="label">Tags</label>
+              <label className="label has-text-centered">Tags</label>
               <input
                 type="text"
                 className="input"

@@ -5,6 +5,7 @@ const JWT = 'store_token_id';
 const setToken = token => {
   localStorage.setItem(JWT, token);
 };
+
 const getToken = token => {
   return localStorage.getItem(JWT);
 };

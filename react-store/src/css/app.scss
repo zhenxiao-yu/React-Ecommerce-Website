@@ -17,7 +17,8 @@ $primary: $purple;
 $link: $dark;
 $danger: $pink;
 
-// update component variables
+//update component variables
 $body-background-color: $beige-lighter;
 
+//import bulma css framework
 @import '../../node_modules/bulma/bulma.sass';

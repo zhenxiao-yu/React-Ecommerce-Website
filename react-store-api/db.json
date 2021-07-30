@@ -100,22 +100,13 @@
       "id": 5
     },
     {
-      "productId": 4,
-      "name": "Nike Air Foamposite One",
-      "image": "/images/4.jpg",
-      "price": "73148",
+      "productId": 2,
+      "name": "Nike Paul George PG 3",
+      "image": "/images/2.jpg",
+      "price": "53800",
       "mount": 1,
       "userId": "admin@uwo.com",
       "id": 6
-    },
-    {
-      "productId": 7,
-      "name": "Nike Hyperdunk X(2018)",
-      "image": "/images/7.jpg",
-      "price": "54600",
-      "mount": 1,
-      "userId": "admin@uwo.com",
-      "id": 7
     }
   ]
 }

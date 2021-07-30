@@ -10,6 +10,7 @@ const getToken = token => {
   return localStorage.getItem(JWT);
 };
 
+//Login method
 const isLogin = () => {
   const jwToken = getToken();
   return !!jwToken && !isTokenExpired(jwToken);
@@ -26,6 +27,7 @@ const isTokenExpired = token => {
   }
 };
 
+//Retrive user information
 const getUser = () => {
   const jwToken = getToken();
   if (isLogin()) {
@@ -36,6 +38,7 @@ const getUser = () => {
   }
 };
 
+//logout method
 const logout = () => {
   localStorage.removeItem(JWT);
 };

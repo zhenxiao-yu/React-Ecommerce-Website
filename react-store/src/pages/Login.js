@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "commons/axios";
 import useForm from "react-hook-form"; //plugin that help with validate form inputs
-import { toast } from "react-toastify";
+import { toast } from "react-toastify"; //notification plugin
 
 export default function Login(props) {
   const { register, handleSubmit, errors } = useForm();

@@ -2,6 +2,7 @@ import decode from 'jwt-decode';
 
 const JWT = 'store_token_id';
 
+//get and set token methods 
 const setToken = token => {
   localStorage.setItem(JWT, token);
 };
@@ -16,6 +17,7 @@ const isLogin = () => {
   return !!jwToken && !isTokenExpired(jwToken);
 };
 
+//Login expired method
 const isTokenExpired = token => {
   try {
     const _info = decode(token);

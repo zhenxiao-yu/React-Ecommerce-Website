@@ -81,12 +81,20 @@
       "id": 11
     },
     {
+      "id": 12,
       "name": "Air Jordan 3",
-      "price": "44900",
-      "status": "available",
+      "price": "23900",
       "tags": "",
       "image": "/images/12.jpg",
-      "id": 12
+      "status": "available"
+    },
+    {
+      "name": "Test 1",
+      "price": "12323",
+      "tags": "2 colors",
+      "image": "/images/4.jpg",
+      "status": "available",
+      "id": 13
     }
   ],
   "carts": [
@@ -104,7 +112,7 @@
       "name": "Nike Paul George PG 3",
       "image": "/images/2.jpg",
       "price": "53800",
-      "mount": 5,
+      "mount": 1,
       "userId": "admin@uwo.com",
       "id": 6
     },
@@ -113,7 +121,7 @@
       "name": "Nike Air Foamposite One",
       "image": "/images/4.jpg",
       "price": "73148",
-      "mount": 3,
+      "mount": 1,
       "userId": "admin@uwo.com",
       "id": 7
     },

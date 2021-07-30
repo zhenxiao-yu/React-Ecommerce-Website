@@ -87,14 +87,6 @@
       "tags": "",
       "image": "/images/12.jpg",
       "status": "available"
-    },
-    {
-      "name": "Test 1",
-      "price": "12323",
-      "tags": "2 colors",
-      "image": "/images/4.jpg",
-      "status": "available",
-      "id": 13
     }
   ],
   "carts": [

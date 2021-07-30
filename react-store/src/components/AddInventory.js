@@ -1,49 +1,50 @@
-import React from 'react';
-import { toast } from 'react-toastify';
-import axios from 'commons/axios';
+import React from "react";
+import { toast } from "react-toastify";
+import axios from "commons/axios";
 
+// Add Inventory components
 class AddInventory extends React.Component {
+  //define new item status fields
   state = {
-    name: '',
-    price: '',
-    tags: '',
-    image: '',
-    status: 'available'
+    name: "",
+    price: "",
+    tags: "",
+    image: "",
+    status: "available",
   };
 
-  handleChange = e => {
+  //retrieve target item value and name
+  handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
+    //set name and value
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
-  submit = e => {
+  //handles the newly submitted item
+  submit = (e) => {
     e.preventDefault();
     const product = { ...this.state };
-    axios.post('products', product).then(res => {
+    axios.post("products", product).then((res) => {
       this.props.close(res.data);
-      toast.success('Add Success');
+      toast.success("Add Success");
     });
   };
 
-  // showToast = () => {
-  //   toast('default');
-  //   toast.info('info');
-  //   toast.success('success');
-  //   toast.warning('warning');
-  //   toast.error('error');
-  // };
-
+  //JFX
   render() {
     return (
       <div className="inventory">
+        {/* header */}
         <p className="title has-text-centered">Inventory</p>
         <form onSubmit={this.submit}>
+
           <div className="field">
             <div className="control">
-              <label className="label">Name</label>
+              {/* Item Name */}
+              <label className="label has-text-left">Item Name</label>
               <textarea
                 className="textarea"
                 name="name"
@@ -52,9 +53,12 @@ class AddInventory extends React.Component {
               />
             </div>
           </div>
+
+
           <div className="field">
             <div className="control">
-              <label className="label">Price</label>
+              {/* Item Price */}
+              <label className="label has-text-left">Price</label>
               <input
                 type="number"
                 className="input"
@@ -64,9 +68,11 @@ class AddInventory extends React.Component {
               />
             </div>
           </div>
+
           <div className="field">
             <div className="control">
-              <label className="label">Tags</label>
+              {/* Item Tag */}
+              <label className="label has-text-left">Tags</label>
               <input
                 type="text"
                 className="input"
@@ -78,7 +84,8 @@ class AddInventory extends React.Component {
           </div>
           <div className="field">
             <div className="control">
-              <label className="label">Image</label>
+              {/* Item Image */}
+              <label className="label has-text-left">Image</label>
               <input
                 type="text"
                 className="input"
@@ -90,13 +97,15 @@ class AddInventory extends React.Component {
           </div>
           <div className="field">
             <div className="control">
-              <label className="label">Status</label>
+              {/* Item Availiablity */}
+              <label className="label has-text-left">Status</label>
               <div className="select is-fullwidth">
                 <select
                   name="status"
                   value={this.state.status}
                   onChange={this.handleChange}
                 >
+                  {/* dropdown options */}
                   <option>available</option>
                   <option>unavailable</option>
                 </select>

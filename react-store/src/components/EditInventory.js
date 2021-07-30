@@ -1,15 +1,15 @@
-import React from "react";
-import { toast } from "react-toastify";
-import axios from "commons/axios";
+import React from 'react';
+import { toast } from 'react-toastify';
+import axios from 'commons/axios';
 
 class EditInventory extends React.Component {
   state = {
-    id: "",
-    name: "",
-    price: "",
-    tags: "",
-    image: "",
-    status: "available",
+    id: '',
+    name: '',
+    price: '',
+    tags: '',
+    image: '',
+    status: 'available'
   };
 
   componentDidMount() {
@@ -20,24 +20,24 @@ class EditInventory extends React.Component {
       image,
       tags,
       price,
-      status,
+      status
     });
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     const value = e.target.value;
     const name = e.target.name;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
-  submit = (e) => {
+  submit = e => {
     e.preventDefault();
     const product = { ...this.state };
-    axios.put(`products/${this.state.id}`, product).then((res) => {
+    axios.put(`products/${this.state.id}`, product).then(res => {
       this.props.close(res.data);
-      toast.success("Edit Success");
+      toast.success('Edit Success');
     });
   };
 
@@ -122,7 +122,11 @@ class EditInventory extends React.Component {
               <button className="button is-link">Submit</button>
             </div>
             <div className="control">
-              <button className="button is-danger" type="button" onClick={this.onDelete}>
+              <button
+                className="button is-danger"
+                type="button"
+                onClick={this.onDelete}
+              >
                 Delete
               </button>
             </div>

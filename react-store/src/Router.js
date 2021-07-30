@@ -1,25 +1,18 @@
-import React from "react";
-//router default
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-//main page
-import App from "pages/App";
-//login page
-import Login from "pages/Login";
-//not found page
-import NotFound from "pages/NotFound";
-
-import Cart from "pages/Cart";
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import App from 'pages/App';
+import Login from 'pages/Login';
+import Register from 'pages/Register';
+import NotFound from 'pages/NotFound';
+import Cart from 'pages/Cart';
 
 const Router = () => (
   <BrowserRouter>
     <Switch>
-      {/*path to main page*/}
       <Route path="/" exact component={App} />
-      {/*path to login page*/}
       <Route path="/login" component={Login} />
-      {/*path to cart page*/}
+      <Route path="/register" component={Register} />
       <Route path="/cart" component={Cart} />
-      {/*direct undefined pages to not found page*/}
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>

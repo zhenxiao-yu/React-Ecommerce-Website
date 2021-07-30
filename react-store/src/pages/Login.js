@@ -1,23 +1,27 @@
-import React from 'react';
-import axios from 'commons/axios';
-import useForm from 'react-hook-form';
-import { toast } from 'react-toastify';
+import React from "react";
+import axios from "commons/axios";
+import useForm from "react-hook-form"; //plugin that help with validate form inputs
+import { toast } from "react-toastify";
 
 export default function Login(props) {
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = async data => {
-    // 3. 处理登录逻辑
+  const onSubmit = async (data) => {
+    //Login function implementation
     try {
       const { email, password } = data;
-      const res = await axios.post('/auth/login', { email, password });
+      //verify user information
+      const res = await axios.post("/auth/login", { email, password });
       const jwToken = res.data;
       console.log(jwToken);
       global.auth.setToken(jwToken);
-      toast.success('Login Success');
-      // 4. 跳转到首页视图
-      props.history.push('/');
-    } catch (error) {
+      //show success message
+      toast.success("Login Success");
+      //redirect to index page when authorized
+      props.history.push("/");
+    } 
+    //if authorization fails
+    catch (error) {
       const message = error.response.data.message;
       toast.error(message);
     }
@@ -30,16 +34,20 @@ export default function Login(props) {
           <label className="label">Email</label>
           <div className="control">
             <input
-              className={`input ${errors.email && 'is-danger'}`}
+              className={`input ${errors.email && "is-danger"}`}
               type="text"
               placeholder="Email"
               name="email"
+              
               ref={register({
-                required: 'email is required',
+                //email field cant be empty
+                required: "email is required",
+                //emial must be in format "xxxxxxxxx@xxx.xxx"
                 pattern: {
-                  value: /^[A-Za-z0-9]+([_\\.][A-Za-z0-9]+)*@([A-Za-z0-9\\-]+\.)+[A-Za-z]{2,6}$/,
-                  message: 'invalid email'
-                }
+                  value:
+                    /^[A-Za-z0-9]+([_\\.][A-Za-z0-9]+)*@([A-Za-z0-9\\-]+\.)+[A-Za-z]{2,6}$/,
+                  message: "invalid email",
+                },
               })}
             />
             {errors.email && (
@@ -51,16 +59,16 @@ export default function Login(props) {
           <label className="label">Password</label>
           <div className="control">
             <input
-              className={`input ${errors.password && 'is-danger'}`}
+              className={`input ${errors.password && "is-danger"}`}
               type="password"
               placeholder="Password"
               name="password"
               ref={register({
-                required: 'password is required',
+                required: "password is required",
                 minLength: {
                   value: 6,
-                  message: 'cannot be less than 6 digits'
-                }
+                  message: "cannot be less than 6 digits",
+                },
               })}
             />
             {errors.password && (

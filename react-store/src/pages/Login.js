@@ -27,10 +27,12 @@ export default function Login(props) {
     }
   };
 
+  //JSX
   return (
     <div className="login-wrapper">
       <form className="box login-box" onSubmit={handleSubmit(onSubmit)}>
         <div className="field">
+          
           <label className="label">Email</label>
           <div className="control">
             <input
@@ -63,14 +65,19 @@ export default function Login(props) {
               type="password"
               placeholder="Password"
               name="password"
+
               ref={register({
+                //password field cant be empty
                 required: "password is required",
+                //minimum length requiremnet for password
                 minLength: {
                   value: 6,
                   message: "cannot be less than 6 digits",
                 },
               })}
             />
+
+            {/* error message container */}
             {errors.password && (
               <p className="helper has-text-danger">
                 {errors.password.message}

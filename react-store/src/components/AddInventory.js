@@ -1,36 +1,40 @@
-import React from "react";
-import { toast } from "react-toastify";
-import axios from "commons/axios";
+import React from 'react';
+import { toast } from 'react-toastify';
+import axios from 'commons/axios';
 
 class AddInventory extends React.Component {
-  //initial form values
   state = {
-    name: "",
-    price: "",
-    tags: "",
-    image: "",
-    status: "available",
+    name: '',
+    price: '',
+    tags: '',
+    image: '',
+    status: 'available'
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     const value = e.target.value;
     const name = e.target.name;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
-  //submit method
-  submit = (e) => {
+  submit = e => {
     e.preventDefault();
     const product = { ...this.state };
-    axios.post("products", product).then((res) => {
-      //close after submit
+    axios.post('products', product).then(res => {
       this.props.close(res.data);
-      //give submission alert
       toast.success('Add Success');
     });
   };
+
+  // showToast = () => {
+  //   toast('default');
+  //   toast.info('info');
+  //   toast.success('success');
+  //   toast.warning('warning');
+  //   toast.error('error');
+  // };
 
   render() {
     return (

@@ -107,24 +107,6 @@
       "mount": 1,
       "userId": "user@uwo.com",
       "id": 8
-    },
-    {
-      "productId": 7,
-      "name": "Nike Hyperdunk X(2018)",
-      "image": "/images/7.jpg",
-      "price": "54600",
-      "mount": 1,
-      "userId": "admin@uwo.com",
-      "id": 9
-    },
-    {
-      "productId": 2,
-      "name": "Nike Paul George PG 3",
-      "image": "/images/2.jpg",
-      "price": "53800",
-      "mount": 1,
-      "userId": "admin@uwo.com",
-      "id": 10
     }
   ]
 }

@@ -1,18 +1,21 @@
-import React from 'react';
-
+import React from "react";
+//user profile component
 export default function UserProfile(props) {
+  
+  // logout method
   const logout = () => {
     global.auth.logout();
-    props.close('logout');
+    props.close("logout");
   };
 
   return (
     <div className="user-profile">
       <p className="title has-text-centered">Profile</p>
       <fieldset disabled>
+      {/* User name */}
         <div className="field">
           <div className="control">
-            <label className="label">Nickname</label>
+            <label className="label has-text-left">Username</label>
             <input
               className="input"
               type="text"
@@ -20,23 +23,27 @@ export default function UserProfile(props) {
             />
           </div>
         </div>
+        {/* user email */}
         <div className="field">
           <div className="control">
-            <label className="label">Email</label>
+            <label className="label has-text-left">Email</label>
             <input
               className="input"
               type="text"
+              //change to email thats signed in
               defaultValue={props.user.email}
             />
           </div>
         </div>
+        {/* user type */}
         <div className="field">
           <div className="control">
-            <label className="label">Type</label>
+            <label className="label has-text-left">Account Type</label>
             <input
               className="input"
               type="text"
-              defaultValue={props.user.type === 1 ? 'Manager' : 'General User'}
+              //change user type status
+              defaultValue={props.user.type === 1 ? "Store Manager" : "Customer"}
             />
           </div>
         </div>
@@ -45,11 +52,13 @@ export default function UserProfile(props) {
       <br />
       <br />
       <div className="field is-grouped is-grouped-centered">
+        {/* logout button */}
         <div className="control">
           <button className="button is-danger" type="button" onClick={logout}>
             Logout
           </button>
         </div>
+        {/* close button */}
         <div className="control">
           <button
             className="button"

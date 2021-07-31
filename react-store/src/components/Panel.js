@@ -18,6 +18,7 @@ class Panel extends React.Component {
     callback: () => {},
   };
 
+  //open panel method 
   open = (
     options = {
       props: {},
@@ -35,6 +36,7 @@ class Panel extends React.Component {
     this.setState({
       active: true,
       component: _component,
+      //return user callback data
       callback: callback,
     });
   };
@@ -80,8 +82,10 @@ class Panel extends React.Component {
   }
 }
 
+//rednder the child component into the panel component 
 const _div = document.createElement("div");
 document.body.appendChild(_div);
+
 
 const _panel = render(<Panel />, _div);
 export default _panel;

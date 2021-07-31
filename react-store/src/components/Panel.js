@@ -41,6 +41,7 @@ class Panel extends React.Component {
     });
   };
 
+  //close panel method
   close = (data) => {
     this.setState({
       active: false,

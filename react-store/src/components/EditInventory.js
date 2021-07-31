@@ -52,7 +52,9 @@ class EditInventory extends React.Component {
   //Remove item from product list
   onDelete = () => {
     axios.delete(`products/${this.state.id}`).then(res => {
+      //delete item by id
       this.props.deleteProduct(this.state.id);
+      //close panel
       this.props.close();
       toast.success('Edit Success');
     });
@@ -62,21 +64,25 @@ class EditInventory extends React.Component {
   render() {
     return (
       <div className="inventory">
+        {/* header */}
         <p className="title has-text-centered">Inventory</p>
         <form onSubmit={this.submit}>
           <div className="field">
             <div className="control">
+              {/* Item Name */}
               <label className="label has-text-centered">Item Name</label>
               <textarea
-                className="textarea"
+                className="textarea" //text box
                 name="name"
                 value={this.state.name}
                 onChange={this.handleChange}
               />
             </div>
           </div>
+
           <div className="field">
             <div className="control">
+              {/* Item Price */}
               <label className="label has-text-left">Price</label>
               <input
                 type="number"
@@ -89,6 +95,7 @@ class EditInventory extends React.Component {
           </div>
           <div className="field">
             <div className="control">
+              {/* Item Tag */}
               <label className="label has-text-centered">Tags</label>
               <input
                 type="text"
@@ -101,6 +108,7 @@ class EditInventory extends React.Component {
           </div>
           <div className="field">
             <div className="control">
+              {/* Item Image */}
               <label className="label">Image</label>
               <input
                 type="text"
@@ -111,8 +119,10 @@ class EditInventory extends React.Component {
               />
             </div>
           </div>
+          
           <div className="field">
             <div className="control">
+              {/* Item Availiablity */}
               <label className="label">Status</label>
               <div className="select is-fullwidth">
                 <select
@@ -120,6 +130,7 @@ class EditInventory extends React.Component {
                   value={this.state.status}
                   onChange={this.handleChange}
                 >
+                  {/* dropdown options */}
                   <option>available</option>
                   <option>unavailable</option>
                 </select>
@@ -128,9 +139,11 @@ class EditInventory extends React.Component {
           </div>
           <br />
           <div className="field is-grouped is-grouped-centered">
+            {/* Sumbit Button */}
             <div className="control">
               <button className="button is-link">Submit</button>
             </div>
+            {/* Delete Button */}
             <div className="control">
               <button
                 className="button is-danger"
@@ -140,6 +153,7 @@ class EditInventory extends React.Component {
                 Delete
               </button>
             </div>
+            {/* Close Button */}
             <div className="control">
               <button
                 className="button"

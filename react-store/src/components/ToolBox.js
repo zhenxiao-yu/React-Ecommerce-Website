@@ -53,6 +53,7 @@ class ToolBox extends React.Component {
                 // seatch bat input
                 type="text"
                 className="input search-input"
+                // dearch bar text 
                 placeholder="What are you looking for?"
                 value={this.state.searchText}
                 onChange={this.handleChange}

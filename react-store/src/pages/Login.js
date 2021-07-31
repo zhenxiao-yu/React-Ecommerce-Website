@@ -32,7 +32,7 @@ export default function Login(props) {
     <div className="login-wrapper">
       <form className="box login-box" onSubmit={handleSubmit(onSubmit)}>
         <div className="field">
-          
+          {/* email */}
           <label className="label">Email</label>
           <div className="control">
             <input

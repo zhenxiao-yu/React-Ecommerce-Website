@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'commons/axios';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import ToolBox from 'components/ToolBox';
+import UtilityBar from 'components/ToolBox';
 import Product from 'components/Product';
 import Panel from 'components/Panel';
 import AddInventory from 'components/AddInventory';
@@ -111,7 +111,7 @@ class Products extends React.Component {
   render() {
     return (
       <div>
-        <ToolBox search={this.search} cartNum={this.state.cartNum} />
+        <UtilityBar search={this.search} cartNum={this.state.cartNum} />
         <div className="products">
           <div className="columns is-multiline is-desktop">
             <TransitionGroup component={null}>

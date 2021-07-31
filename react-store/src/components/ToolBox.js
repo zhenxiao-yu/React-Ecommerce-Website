@@ -1,50 +1,64 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import React from "react";
+import { withRouter } from "react-router-dom";
+import { toast } from "react-toastify";
+
+//Utility bar component
 class ToolBox extends React.Component {
+  //search bar input state
   state = {
-    searchText: ''
+    searchText: "",
   };
 
-  handleChange = e => {
+  //handles changes to the search bar
+  handleChange = (e) => {
     const value = e.target.value;
     this.setState({
-      searchText: value
+      searchText: value,
     });
     this.props.search(value);
   };
 
+  //empty search bar
   clearSearchText = () => {
     this.setState({
-      searchText: ''
+      searchText: "",
     });
-    this.props.search('');
+    this.props.search("");
   };
 
+  //redirect to shopping cart
   goCart = () => {
+    //check if a user has already logged in
     if (!global.auth.isLogin()) {
-      this.props.history.push('/login');
-      toast.info('Please Login First');
+      this.props.history.push("/login");
+      //show required login notification
+      toast.info("Please Login First");
       return;
     }
-    this.props.history.push('/cart');
+    //if logged in, go to shopping cart page
+    this.props.history.push("/cart");
   };
 
+  //JFX
   render() {
     return (
       <div className="tool-box">
-        <div className="logo-text">Store</div>
+        <div className="logo-text">
+          <i className="fas fa-cog"></i> WDDT
+        </div>
         <div className="search-box">
           <div className="field has-addons">
             <div className="control">
               <input
+                // seatch bat input
                 type="text"
                 className="input search-input"
-                placeholder="Search Product"
+                placeholder="What are you looking for?"
                 value={this.state.searchText}
                 onChange={this.handleChange}
               />
             </div>
+            {/* clear button */}
             <div className="control">
               <button className="button" onClick={this.clearSearchText}>
                 X
@@ -52,6 +66,7 @@ class ToolBox extends React.Component {
             </div>
           </div>
         </div>
+        {/* shopping cart icon */}
         <div to="/cart" className="cart-box" onClick={this.goCart}>
           <i className="fas fa-shopping-cart"></i>
           <span className="cart-num">({this.props.cartNum})</span>

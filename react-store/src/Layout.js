@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import Header from "components/Header";
+import Footer from "components/Footer";
 
 const Layout = (props) => {
   const user = useMemo(() => {
@@ -10,6 +11,7 @@ const Layout = (props) => {
     <div className="main">
       <Header user={user} />
       {props.children}
+      <Footer/>
     </div>
   );
 };

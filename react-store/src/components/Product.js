@@ -117,7 +117,8 @@ class Product extends React.Component {
             disabled={status === "unavailable"}
             onClick={this.addCart}
           >
-            <i className="fas fa-shopping-cart"></i>
+            {/* add to cart button */}
+            <i className="fas fa-cart-plus"></i>
             <i className="fas fa-exclamation"></i>
           </button>
         </div>

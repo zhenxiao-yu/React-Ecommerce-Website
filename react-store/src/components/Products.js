@@ -7,7 +7,7 @@ import Panel from 'components/Panel';
 import AddInventory from 'components/AddInventory';
 
 class Products extends React.Component {
-  //Defien product list state 
+  //Define product list state 
   state = {
     products: [], // list of products 
     sourceProducts: [],
@@ -15,7 +15,7 @@ class Products extends React.Component {
   };
 
   componentDidMount() {
-
+    //hook
     axios.get('/products').then(response => {
       this.setState({
         products: response.data,
@@ -132,16 +132,20 @@ class Products extends React.Component {
             <TransitionGroup component={null}>
               {this.state.products.map(p => {
                 return (
+                  //markdown css transition area 
                   <CSSTransition
                     classNames="product-fade"
                     timeout={300}
                     key={p.id}
                   >
+                    {/* react has 12 columns, each product takeing up 3 columns = 4 products per row*/}
                     <div className="column is-3" key={p.id}>
                       <Product
                         product={p}
+                        //update product list items
                         update={this.update}
                         delete={this.delete}
+                        //render cart number in real time
                         updateCartNum={this.updateCartNum}
                       />
                     </div>
@@ -150,9 +154,10 @@ class Products extends React.Component {
               })}
             </TransitionGroup>
           </div>
+          {/* add item button */}
           {(global.auth.getUser() || {}).type === 1 && (
             <button className="button is-primary add-btn" onClick={this.toAdd}>
-              add
+             <i class="fas fa-plus-circle"></i>
             </button>
           )}
         </div>

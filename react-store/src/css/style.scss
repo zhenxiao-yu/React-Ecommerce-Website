@@ -183,8 +183,12 @@ body {
   padding: 1.4rem 0;
   .add-btn {
     position: fixed;
-    right: 0;
-    top: 10rem;
+    right: 2rem;
+    bottom: 4rem;
+    width:70px;
+    height:70px;
+    font-size: 30px;
+    border-radius:50%;
     z-index: 99;
   }
 }
@@ -360,20 +364,10 @@ body {
     }
     .price {
       font-weight: 600;
-      // &::before {
-      //   content: '￥';
-      //   font-size: 12px;
-      //   margin-right: 2px;
-      // }
     }
     .sum-price {
       font-weight: 600;
       color: rgb(214, 111, 111);
-      // &::before {
-      //   content: '￥';
-      //   font-size: 12px;
-      //   margin-right: 2px;
-      // }
     }
     & td {
       vertical-align: middle;
@@ -394,10 +388,6 @@ body {
       font-size: 20px;
       font-weight: 600;
       color: rgb(214, 111, 111);
-      // &::before {
-      //   content: '￥';
-      //   font-size: 16px;
-      // }
     }
   }
 }

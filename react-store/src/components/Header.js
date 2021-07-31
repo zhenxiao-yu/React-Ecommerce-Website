@@ -3,7 +3,9 @@ import { Link, withRouter } from 'react-router-dom';
 import Panel from 'components/Panel';
 import UserProfile from 'components/UserProfile';
 
+//Header components
 const Header = props => {
+  //open user profile panel method
   const toProfile = () => {
     Panel.open({
       component: UserProfile,
@@ -21,18 +23,22 @@ const Header = props => {
     <div className="header">
       <div className="grid">
         <div className="start">
+          {/* refresh page */}
           <Link to="/">Home</Link>
         </div>
         <div className="end">
           {props.user.nickname ? (
+            //display user profle panel on click
             <span className="nickname" onClick={toProfile}>
               <i className="far fa-user"></i>
               {props.user.nickname}
             </span>
           ) : (
-            // <React.Fragment></React.Fragment> 可以使用简写 <></>
+            // fragmented template 
             <React.Fragment>
+              {/* redirect to login page */}
               <Link to="/login">Login</Link>
+              {/* redirect to Register page */}
               <Link to="/register">Register</Link>
             </React.Fragment>
           )}

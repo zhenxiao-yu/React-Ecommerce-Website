@@ -1,26 +1,28 @@
-/**
- 1. 一次渲染，随需调用
- 2. 装载组件
-    (1)、子组件作为参数传递并被渲染
-    (2)、子组件可以关闭弹出层
-    (3)、子组件与调用者可以通讯
- */
-
-import React from 'react';
-import { render } from 'react-dom';
+import React from "react";
+import { render } from "react-dom";
 
 class Panel extends React.Component {
+  /**
+ * Panel component requirements:
+ 1. Rendered only once + reusable
+ 2. Act as an Container component
+    (1)、child component can be rendered within
+    (2)、Child components can close parent compoent (cancel button)
+    (3)、Child compoent can communicate with other components
+ */
+
+  //descalre state of the the panel component
   state = {
     active: false,
     component: null,
-    callback: () => {}
+    callback: () => {},
   };
 
   open = (
     options = {
       props: {},
       component: null,
-      callback: () => {}
+      callback: () => {},
     }
   ) => {
     const { props, component, callback } = options;
@@ -28,26 +30,26 @@ class Panel extends React.Component {
     const _component = React.createElement(component, {
       ...props,
       close: this.close,
-      key: _key
+      key: _key,
     });
     this.setState({
       active: true,
       component: _component,
-      callback: callback
+      callback: callback,
     });
   };
 
-  close = data => {
+  close = (data) => {
     this.setState({
-      active: false
+      active: false,
     });
     this.state.callback(data);
   };
 
   render() {
     const _class = {
-      true: 'panel-wrapper active',
-      false: 'panel-wrapper'
+      true: "panel-wrapper active",
+      false: "panel-wrapper",
     };
     return (
       <div className={_class[this.state.active]}>
@@ -75,7 +77,7 @@ class Panel extends React.Component {
   }
 }
 
-const _div = document.createElement('div');
+const _div = document.createElement("div");
 document.body.appendChild(_div);
 
 const _panel = render(<Panel />, _div);

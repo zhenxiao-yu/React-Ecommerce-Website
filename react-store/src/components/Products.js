@@ -7,28 +7,31 @@ import Panel from 'components/Panel';
 import AddInventory from 'components/AddInventory';
 
 class Products extends React.Component {
+  //Defien product list state 
   state = {
-    products: [],
+    products: [], // list of products 
     sourceProducts: [],
-    cartNum: 0
+    cartNum: 0 //no cart item in cart at default
   };
 
   componentDidMount() {
+
     axios.get('/products').then(response => {
       this.setState({
         products: response.data,
         sourceProducts: response.data
       });
     });
+    //update the number of items currently in the shopping cart 
     this.updateCartNum();
   }
 
   // search
   search = text => {
-    // 1. Get New Array
+    //create new search result product array 
     let _products = [...this.state.sourceProducts];
 
-    // 2. Filter New Array
+    //Filter the newly created array 
     _products = _products.filter(p => {
       // name: Abcd text: ab   ===> ['Ab']
       // text: '' ==> ["", "", "", "", ""]
@@ -36,13 +39,15 @@ class Products extends React.Component {
       return !!matchArray;
     });
 
-    // 3. set State
+    //set the new state of the product 
     this.setState({
       products: _products
     });
   };
 
+  //Add new item to the product list 
   toAdd = () => {
+    //open panel component 
     Panel.open({
       component: AddInventory,
       callback: data => {
@@ -53,6 +58,17 @@ class Products extends React.Component {
     });
   };
 
+  //update the number of item in cart currently
+  updateCartNum = async () => {
+    const cartNum = await this.initCartNum();
+    //change state of the cartNum value 
+    this.setState({
+      cartNum: cartNum
+    });
+  };
+
+
+  //add product method 
   add = product => {
     const _products = [...this.state.products];
     _products.push(product);
@@ -65,11 +81,13 @@ class Products extends React.Component {
     });
   };
 
+  //update product method 
   update = product => {
     const _products = [...this.state.products];
     const _index = _products.findIndex(p => p.id === product.id);
     _products.splice(_index, 1, product);
     const _sProducts = [...this.state.sourceProducts];
+    
     const _sIndex = _products.findIndex(p => p.id === product.id);
     _sProducts.splice(_sIndex, 1, product);
     this.setState({
@@ -78,6 +96,7 @@ class Products extends React.Component {
     });
   };
 
+  //delet product method 
   delete = id => {
     const _products = this.state.products.filter(p => p.id !== id);
     const _sProducts = this.state.sourceProducts.filter(p => p.id !== id);
@@ -87,15 +106,11 @@ class Products extends React.Component {
     });
   };
 
-  updateCartNum = async () => {
-    const cartNum = await this.initCartNum();
-    this.setState({
-      cartNum: cartNum
-    });
-  };
-
+  //initialize cart number method 
   initCartNum = async () => {
+    //get user info
     const user = global.auth.getUser() || {};
+    //get the shopping cart associated with each user 
     const res = await axios.get('/carts', {
       params: {
         userId: user.email

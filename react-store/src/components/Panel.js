@@ -46,6 +46,7 @@ class Panel extends React.Component {
     this.state.callback(data);
   };
 
+  //JFX
   render() {
     const _class = {
       true: "panel-wrapper active",
@@ -53,9 +54,11 @@ class Panel extends React.Component {
     };
     return (
       <div className={_class[this.state.active]}>
+        {/* overlay rest of the page when panel is open*/}
         <div
           className="over-layer"
           onClick={() => {
+            //close panel when user clicks on overlay
             this.close();
           }}
         ></div>

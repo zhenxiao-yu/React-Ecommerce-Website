@@ -8,12 +8,14 @@ const middleWares = jsonServer.defaults();
 server.use(jsonServer.bodyParser);
 server.use(middleWares);
 
+//retrive user databse 
 const getUsersDb = () => {
   return JSON.parse(
     fs.readFileSync(path.join(__dirname, 'users.json'), 'UTF-8')
   );
 };
 
+//validate user sign in 
 const isAuthenticated = ({ email, password }) => {
   return (
     getUsersDb().users.findIndex(
@@ -21,10 +23,12 @@ const isAuthenticated = ({ email, password }) => {
     ) !== -1
   );
 };
+//check if an user alreadu exists 
 const isExist = email => {
   return getUsersDb().users.findIndex(user => user.email === email) !== -1;
 };
 
+//login expiration 
 const SECRET = '12321JKLSJKLSDFJK23423432';
 const expiresIn = '1h';
 const createToken = payload => {

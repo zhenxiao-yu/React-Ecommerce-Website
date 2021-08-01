@@ -1,9 +1,10 @@
+
 {
   "products": [
     {
       "id": 1,
       "name": "Air Jordan 4",
-      "price": "59440",
+      "price": "12440",
       "tags": "93",
       "image": "/images/1.jpg",
       "status": "unavailable"
@@ -13,7 +14,7 @@
       "name": "Nike Paul George PG 3",
       "image": "/images/2.jpg",
       "tags": "25 Colors",
-      "price": "53800",
+      "price": "13800",
       "status": "available"
     },
     {
@@ -21,7 +22,7 @@
       "name": "Nike Air Foamposite One",
       "image": "/images/4.jpg",
       "tags": "84 Colors",
-      "price": "73148",
+      "price": "13148",
       "status": "unavailable"
     },
     {
@@ -29,23 +30,23 @@
       "name": "adidas Harden Vol.3",
       "image": "/images/5.jpg",
       "tags": "34 Colors",
-      "price": "46900",
+      "price": "16900",
       "status": "available"
     },
     {
       "id": 6,
       "name": "Nike Zoom Kobe 1",
-      "image": "/images/6.jpg",
+      "price": "10391",
       "tags": "26 Colors",
-      "price": "80391",
-      "status": "available"
+      "image": "/images/6.jpg",
+      "status": "unavailable"
     },
     {
       "id": 7,
       "name": "Nike Hyperdunk X(2018)",
-      "image": "/images/7.jpg",
+      "price": "12600",
       "tags": "",
-      "price": "54600",
+      "image": "/images/7.jpg",
       "status": "available"
     },
     {
@@ -53,28 +54,28 @@
       "name": "Nike KD 12",
       "image": "/images/8.jpg",
       "tags": "",
-      "price": "81800",
+      "price": "11800",
       "status": "available"
     },
     {
+      "id": 9,
       "name": "adidas D.O.N. Issue #1",
-      "price": "38800",
-      "status": "available",
+      "price": "18800",
       "tags": "",
       "image": "/images/9.jpg",
-      "id": 9
+      "status": "unavailable"
     },
     {
+      "id": 10,
       "name": "adidas D.O.N. Issue #1",
-      "price": "48900",
-      "status": "available",
+      "price": "18900",
       "tags": "",
       "image": "/images/10.jpg",
-      "id": 10
+      "status": "available"
     },
     {
       "name": "Nike Kyrie Flytrap",
-      "price": "34400",
+      "price": "14400",
       "status": "available",
       "tags": "",
       "image": "/images/11.jpg",
@@ -83,7 +84,7 @@
     {
       "id": 12,
       "name": "Air Jordan 3",
-      "price": "23900",
+      "price": "13900",
       "tags": "",
       "image": "/images/12.jpg",
       "status": "available"
@@ -94,8 +95,8 @@
       "productId": 6,
       "name": "Nike Zoom Kobe 1",
       "image": "/images/6.jpg",
-      "price": "80391",
-      "mount": 3,
+      "price": "12391",
+      "mount": 4,
       "userId": "admin@163.com",
       "id": 5
     },
@@ -103,7 +104,7 @@
       "productId": 9,
       "name": "adidas D.O.N. Issue #1",
       "image": "/images/9.jpg",
-      "price": "38800",
+      "price": "18800",
       "mount": 1,
       "userId": "user@uwo.com",
       "id": 8
@@ -112,19 +113,10 @@
       "productId": 5,
       "name": "adidas Harden Vol.3",
       "image": "/images/5.jpg",
-      "price": "46900",
+      "price": "16900",
       "mount": 1,
       "userId": "admin@uwo.com",
       "id": 9
-    },
-    {
-      "productId": 7,
-      "name": "Nike Hyperdunk X(2018)",
-      "image": "/images/7.jpg",
-      "price": "54600",
-      "mount": 2,
-      "userId": "admin@uwo.com",
-      "id": 10
     }
   ]
 }
